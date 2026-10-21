@@ -1,0 +1,89 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #22156b;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 20px; /* DIUBAH: dari 50px ke 20px agar lengkungan kotak tidak terlalu ekstrem */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 420px;
+    text-align: center; /* DITAMBAHKAN: agar logo Google dan elemen teks otomatis berada di tengah */
+}
+
+h1, h2 { 
+    margin: 0 0 10px 0; 
+    color: #0f172a; 
+    text-align: center; 
+}
+
+h1 {
+    font-size: 24px; /* DITAMBAHKAN: agar ukuran judul utama tidak terlalu besar */
+}
+
+h2 {
+    font-size: 20px; /* DITAMBAHKAN: agar ukuran sub-judul proporsional */
+}
+
+.subtitle { 
+    margin: 0 0 30px 0; 
+    color: #64748b; 
+    font-size: 14px; 
+    text-align: center; 
+}
+
+.input-group { 
+    margin-bottom: 20px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; /* DITAMBAHKAN: agar input box berbaris rapi di tengah container */
+}
+
+.input-group input { 
+    padding: 12px; 
+    border: 1px solid #cbd5e1; 
+    border-radius: 6px; 
+    font-size: 14px; 
+    width: 85%; /* DITAMBAHKAN: mengatur lebar kotak input nama & password */
+    box-sizing: border-box; /* DITAMBAHKAN: memastikan padding tidak merusak ukuran lebar */
+}
+
+/* Mengatur fokus saat kotak input diklik */
+.input-group input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+button[type="submit"] { 
+    width: 85%; /* DIUBAH: dari 100% ke 85% agar panjang tombol SAMA PERSIS dengan kotak input */
+    padding: 13px; 
+    background-color: #3b82f6; 
+    color: white; 
+    border: none; 
+    border-radius: 6px; 
+    font-size: 16px; 
+    font-weight: bold; 
+    cursor: pointer; 
+    transition: background 0.2s; /* DITAMBAHKAN: efek halus saat tombol ditekan */
+}
+
+/* Efek saat tombol login diarahkan kursor */
+button[type="submit"]:hover {
+    background-color: #1d4ed8;
+}
+
+/* Kelas-kelas di bawah ini tetap dipertahankan jika nanti Anda butuh tombol tambahan */
+.action-buttons { display: flex; gap: 12px; margin-top: 25px; }
+.btn-secondary { background-color: #0ea5e9; }
+.btn-success { background-color: #10b981; }
+.btn-link { background-color: transparent; color: #3b82f6; margin-top: 20px; }
+.hidden { display: none !important; }

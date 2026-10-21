@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIM - Halaman Utama</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+    <!-- Ditambahkan ID "dashboardContainer" untuk dimanipulasi lewat JS -->
+    <div class="dashboard-container" id="dashboardContainer">
+        
+        <!-- SIDEBAR NAVIGASI (SAMPING KIRI VERTIKAL) -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <h2>Manajemen</h2>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <!-- MENU 1: SETTING -->
+                <div class="menu-item">
+                    <button class="menu-toggle" onclick="toggleDropdown(this)">
+                        <span>⚙️ Setting</span>
+                        <span class="arrow">▶</span>
+                    </button>
+                    <div class="sub-menu">
+                        <a href="profil.html" target="kontenUtama">Profil Yayasan</a>
+                        <a href="user.html" target="kontenUtama">Manajemen User</a>
+                    </div>
+                </div>
+
+                <!-- MENU 2: FORM -->
+                <div class="menu-item">
+                    <button class="menu-toggle" onclick="toggleDropdown(this)">
+                        <span>📝 Form</span>
+                        <span class="arrow">▶</span>
+                    </button>
+                    <div class="sub-menu">
+                        <a href="input_siswa.html" target="kontenUtama">Input Data Siswa</a>
+                        <a href="input_keuangan.html" target="kontenUtama">Input Keuangan</a>
+                    </div>
+                </div>
+
+                <!-- MENU 3: REPORT -->
+                <div class="menu-item">
+                    <button class="menu-toggle" onclick="toggleDropdown(this)">
+                        <span>📊 Report</span>
+                        <span class="arrow">▶</span>
+                    </button>
+                    <div class="sub-menu">
+                        <a href="laporan_bulanan.html" target="kontenUtama">Laporan Bulanan</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="index.html" class="btn-logout">❌ Keluar</a>
+            </div>
+        </aside>
+
+                <!-- AREA KONTEN UTAMA (KANAN) -->
+        <main class="main-content">
+            <!-- BARU: Header Atas untuk Tombol Toggle Sidebar -->
+            <header class="top-bar">
+                <button class="toggle-sidebar-btn" onclick="toggleSidebar()" title="Buka/Tutup Menu">
+                    <img src="big.jpg" alt="Logo BIG" class="logo-toggle">
+                </button>
+            </header>
+
+            <!-- JENDELA IFRAME YANG SUDAH DIAMANKAN (Cukup Tulis 1 Saja) -->
+            <iframe 
+                src="welcome.html" 
+                name="kontenUtama" 
+                title="Konten Utama SIM" 
+                class="content-frame" 
+                sandbox="allow-forms allow-scripts allow-same-origin">
+            </iframe>
+        </main>
+
+
+    </div>
+
+    <script>
+        // Fungsi baru untuk menutup/membuka sidebar ke kiri
+        function toggleSidebar() {
+            const container = document.getElementById("dashboardContainer");
+            container.classList.toggle("sidebar-closed");
+        }
+
+        // Fungsi dropdown sub-menu yang sudah ada
+        function toggleDropdown(button) {
+            const subMenu = button.nextElementSibling;
+            const arrow = button.querySelector('.arrow');
+            const isOpen = subMenu.style.maxHeight;
+
+            document.querySelectorAll('.sub-menu').forEach(el => {
+                el.style.maxHeight = null;
+                el.previousElementSibling.classList.remove('active');
+                el.previousElementSibling.querySelector('.arrow').style.transform = 'rotate(0deg)';
+            });
+
+            if (!isOpen) {
+                subMenu.style.maxHeight = subMenu.scrollHeight + "px";
+                button.classList.add('active');
+                arrow.style.transform = 'rotate(90deg)';
+            }
+        }
+    </script>
+</body>
+</html>

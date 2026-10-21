@@ -1,0 +1,239 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f1f5f9;
+    color: #0f172a;
+}
+
+/* Membagi layar menjadi 2 kolom: Sidebar (Kiri) dan Konten (Kanan) */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- DESIGN SIDEBAR KIRI --- */
+.sidebar {
+    width: 260px;
+    background-color: #22156b; /* Warna ungu gelap disamakan dengan tema halaman login Anda */
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-brand {
+    padding: 25px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.sidebar-brand h2 {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.sidebar-menu {
+    flex: 1;
+    padding: 20px 0;
+}
+
+/* Tombol Menu Utama (Setting, Form, Report) */
+.menu-toggle {
+    width: 100%;
+    padding: 15px 20px;
+    background: transparent;
+    border: none;
+    color: #cbd5e1;
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+
+.menu-toggle:hover, .menu-toggle.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+.arrow {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+/* Sub-Menu Wrapper dengan Efek Animasi Meluncur */
+.sub-menu {
+    max-height: 0;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.2);
+    transition: max-height 0.3s ease-out;
+}
+
+/* Link Sub-Menu di dalamnya */
+.sub-menu a {
+    display: block;
+    padding: 12px 20px 12px 45px;
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+
+.sub-menu a:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-logout {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    background-color: #ef4444;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.btn-logout:hover {
+    background-color: #dc2626;
+}
+
+/* --- DESIGN KONTEN KANAN --- */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-header {
+    background-color: #ffffff;
+    padding: 20px 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.content-header h1 {
+    font-size: 24px;
+    color: #1e293b;
+}
+
+.content-header p {
+    color: #64748b;
+    font-size: 14px;
+}
+
+.content-body {
+    padding: 40px;
+    flex: 1;
+}
+
+.welcome-box {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid #22156b;
+}
+
+.welcome-box h3 {
+    margin-bottom: 10px;
+    color: #22156b;
+}
+
+.welcome-box p {
+    color: #475569;
+    line-height: 1.6;
+}
+/* Mengatur iframe agar memenuhi sisa area kanan layar secara penuh */
+.content-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #f1f5f9;
+}
+/* --- Tambahan/Perubahan Struktur Utama --- */
+
+/* Beri efek transisi pada sidebar agar gerakannya mulus */
+.sidebar {
+    width: 260px;
+    background-color: #22156b;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease; /* EFEK ANIMASI GESER */
+}
+
+/* BARU: Top Bar untuk menaruh tombol ☰ */
+.top-bar {
+    background-color: #ffffff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+}
+
+/* BARU: Style untuk tombol pemicu tutup/buka menu */
+.toggle-sidebar-btn {
+    background-color: #22156b;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.toggle-sidebar-btn:hover {
+    background-color: #3b82f6;
+}
+
+/* --- LOGIKA UTAMA SAAT SIDEBAR DITUTUP (DI-TOGGLE) --- */
+
+/* Saat class ini aktif, sidebar kiri akan menciut/bergeser ke kiri luar layar */
+.sidebar-closed .sidebar {
+    width: 0px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none; /* Mencegah menu diklik saat sembunyi */
+}
+/* BARU/UPDATE: Style untuk tombol logo agar transparan dan bersih */
+.toggle-sidebar-btn {
+    background: transparent; /* Menghilangkan warna latar belakang kotak */
+    border: none;            /* Menghilangkan garis tepi kotak */
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease; /* Efek sedikit interaktif saat diklik */
+}
+
+/* Efek saat logo disorot kursor (sedikit membesar/memberi feedback) */
+.toggle-sidebar-btn:hover {
+    transform: scale(1.05); 
+    background: transparent; /* Memastikan tidak ada warna biru/abu yang muncul saat di-hover */
+}
+
+/* Mengatur ukuran logo di dalam tombol agar proporsional di bar atas */
+.logo-toggle {
+    width: auto;
+    height: 40px;            /* Mengunci tinggi logo agar pas dengan bar atas, lebar otomatis menyesuaikan */
+    object-fit: contain;
+    display: block;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIM - Yayasan BIG</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Gambar logo utama -->
+        <img src="big.jpg" alt="BIG" width="200" height="50" style="display: block; margin: 0 auto 20px auto;">
+        
+        <h1>Sistem Informasi Manajemen</h1>
+        <p class="subtitle">Selamat Datang</p>
+
+        <!-- FORM LOGIN -->
+        <form id="loginForm" onsubmit="return verifikasiLogin(event)">
+            <!-- Atribut style manual di dalam input sudah dihapus agar mengikuti file CSS -->
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Nama User" required>
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+            
+            <!-- Ukuran panjang, tinggi, dan warna tombol sekarang otomatis diatur oleh file CSS -->
+            <button type="submit">Login</button>
+        </form>
+
+        <br>
+        <!-- Logo Google otomatis berada di tengah karena efek text-align di file CSS -->
+        <a href="https://google.com" target="_blank"> 
+            <img src="google.png" alt="logo google" width="25" height="25">
+        </a>
+    </div>
+
+    <script>
+        function verifikasiLogin(event) {
+            // Mencegah form melakukan reload halaman bawaan browser
+            event.preventDefault(); 
+            
+            // Mengambil nilai yang diinput oleh user
+            const nama = document.getElementById("username").value;
+            const pass = document.getElementById("password").value;
+
+            // Logika pengecekan akun
+            if (nama === "admin" && pass === "12345") {
+                alert("Login Berhasil! Silahkan masuk.");
+                window.location.href = "utama.html"; // Berpindah ke halaman kedua
+            } else {
+                alert("Nama User atau Password salah! (Gunakan nama: admin & password: 12345)");
+            }
+        }
+    </script>
+</body>
+</html>
